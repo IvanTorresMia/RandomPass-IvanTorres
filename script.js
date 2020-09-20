@@ -86,6 +86,8 @@ function generatePassword() {
   }
 
 // This Code is creating an array concatnating all of the users answers in "userChoices"
+// It also assures that no matter how many characters the password is, it includes all the characters chosen by the user
+// It's doing this by concatenating a new array that stores random characters from the other letter arrays
   var assuringChoices = [];
   var usersChoices = [];
   if (userUpper) {
@@ -110,17 +112,13 @@ function generatePassword() {
   }
 
   // This For loop Creates a random Password using the "userChoices" array and returning it to password1
-  var password1 = " ";
+  var password1 = "";
   password1 = password1.concat(assuringChoices);
   for (var i = 0; i < passLength - assuringChoices.length; i++) {
     var randomNumber = Math.floor(Math.random() * usersChoices.length);
     password1 += usersChoices[randomNumber];
   }
-//  // Write password to the #password input
-// "Ui9^fjei"
-  
-  //var passwordText = document.querySelector("#password");
-  
+  var password1 = password1.split('').sort(function(){return 0.5-Math.random()}).join('');
   //This is returing the value of password so we can use the function in a global scope.
   return password1;
 }
