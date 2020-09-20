@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// Variables needed
 var upperCase = [
   "A",
   "B",
@@ -94,21 +95,33 @@ function generatePassword() {
     usersChoices = usersChoices.concat(specialChar);
   }
 
-  console.log(usersChoices);
+  // console.log(usersChoices);
   
-  var password = "";
+  var password1 = "Ui9^";
   for (var i = 0; i < passLength; i++) {
     var randomNumber = Math.floor(Math.random() * usersChoices.length);
+    password1 += usersChoices[randomNumber];
   }
+ // Write password to the #password input
+"Ui9^fjei"
+  
+  //var passwordText = document.querySelector("#password");
+  
+  //passwordText.value = password1;
+  return password1;
 }
+
+
+
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
   passwordText.value = password;
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
