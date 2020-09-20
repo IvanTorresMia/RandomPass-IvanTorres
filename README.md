@@ -9,7 +9,9 @@ This Homework assignment was focused on Javascripts, with it we created a random
 ## Features
 * Screen Shot of Genereated Password.
 
-[Screen-Shot-of-generated-pass](images/SreenShot.jpg)
+
+
+![Screen-Shot-of-generated-pass](https://github.com/IvanTorresMia/RandomPass-IvanTorres/blob/master/images/gif-homeswork.gif?raw=true)
 
 * This generates code Im especially proud off, making sure that every character the user says "yes" to displays on the password regardless of the amount of characters was challenging but satisfying when it worked. There's two parts to it so I will explaing both
 
