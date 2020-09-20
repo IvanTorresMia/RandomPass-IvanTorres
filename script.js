@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// Variables needed
+// Variables containing all the characters and number needed. 
 var upperCase = [
   "A",
   "B",
@@ -60,6 +60,8 @@ var lowerCase = [
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 
+// Function that will generate the Random Password. 
+// First we promped the user for a number of characters. If they have bad input then the "return" stops the code. 
 function generatePassword() {
   var passLength = prompt(
     "Choose a number of characters from 8 to 128 for your password."
@@ -71,6 +73,8 @@ function generatePassword() {
     return;
   }
 
+// variables storing all of the users answers using "confirm" in order to return a boolean
+// if user returns all "false" booleans then "return" stops the code.
   var userUpper = confirm("Would you like a Upper case letter?");
   var userLower = confirm("Would you like a Lower case letter?");
   var userNum = confirm("Would you like a number?");
@@ -81,40 +85,50 @@ function generatePassword() {
     return;
   }
 
+// This Code is creating an array concatnating all of the users answers in "userChoices"
+  var assuringChoices = [];
   var usersChoices = [];
   if (userUpper) {
     usersChoices = usersChoices.concat(upperCase);
+    var randomUpper = Math.floor(Math.random() * upperCase.length);
+    assuringChoices += upperCase[randomUpper];
   }
   if (userLower) {
     usersChoices = usersChoices.concat(lowerCase);
+    var randomLower = Math.floor(Math.random() * lowerCase.length);
+    assuringChoices += lowerCase[randomLower];
   }
   if (userNum) {
     usersChoices = usersChoices.concat(numbers);
+    var randomNum = Math.floor(Math.random() * numbers.length);
+    assuringChoices += numbers[randomNum];
   }
   if (userSpecial) {
     usersChoices = usersChoices.concat(specialChar);
+    var randomSpecial = Math.floor(Math.random() * specialChar.length);
+    assuringChoices += specialChar[randomSpecial];
   }
 
-  // console.log(usersChoices);
-  
-  var password1 = "Ui9^";
-  for (var i = 0; i < passLength; i++) {
+  // This For loop Creates a random Password using the "userChoices" array and returning it to password1
+  var password1 = " ";
+  password1 = password1.concat(assuringChoices);
+  for (var i = 0; i < passLength - assuringChoices.length; i++) {
     var randomNumber = Math.floor(Math.random() * usersChoices.length);
     password1 += usersChoices[randomNumber];
   }
- // Write password to the #password input
-"Ui9^fjei"
+//  // Write password to the #password input
+// "Ui9^fjei"
   
   //var passwordText = document.querySelector("#password");
   
-  //passwordText.value = password1;
+  //This is returing the value of password so we can use the function in a global scope.
   return password1;
 }
 
 
 
 
-// Write password to the #password input
+// This function is writing the password to the password ID 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -123,5 +137,5 @@ function writePassword() {
 }
 
 
-// Add event listener to generate button
+// Adding an event listener to start the entire function when the button is pressed. 
 generateBtn.addEventListener("click", writePassword);
